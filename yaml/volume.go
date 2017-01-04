@@ -25,7 +25,7 @@ func (v *Volume) String() string {
 	if v.Source != "" {
 		paths = []string{v.Source, v.Destination}
 	} else {
-		paths = []string{v.Destination}
+		paths = []string{v.Destination, v.Destination}
 	}
 	if v.AccessMode != "" {
 		paths = append(paths, v.AccessMode)
@@ -57,6 +57,7 @@ func (v *Volumes) UnmarshalYAML(unmarshal func(interface{}) error) error {
 			switch {
 			case len(elts) == 1:
 				vol = &Volume{
+					Source:      elts[0],
 					Destination: elts[0],
 				}
 			case len(elts) == 2:

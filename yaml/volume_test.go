@@ -26,7 +26,7 @@ func TestMarshalVolumes(t *testing.T) {
 					},
 				},
 			},
-			expected: `- /in/the/container
+			expected: `- /in/the/container:/in/the/container
 `,
 		},
 		{
@@ -100,6 +100,7 @@ func TestUnmarshalVolumes(t *testing.T) {
 			expected: &Volumes{
 				Volumes: []*Volume{
 					{
+						Source:      "/in/the/container",
 						Destination: "/in/the/container",
 					},
 				},
